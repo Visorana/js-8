@@ -2,7 +2,7 @@ let rotatorCases = document.querySelectorAll('.rotator__case');
 let caseIndex = 0;
 
 rotatorCases.forEach((rotatorCase) => {
-    rotatorCase.style.color = rotatorCase.getAttribute('data-color')
+    rotatorCase.style.color = rotatorCase.getAttribute('data-color');
 })
 
 function rotate() {
@@ -12,8 +12,8 @@ function rotate() {
         caseIndex = 0;
     };
     rotatorCases[caseIndex].classList.add('rotator__case_active');
-    timing = rotatorCases[caseIndex].getAttribute('data-speed')
-    window.setTimeout(rotate, timing)
+    timing = rotatorCases[caseIndex].getAttribute('data-speed');
+    window.setTimeout(rotate, timing);
 }
 
 rotate()
