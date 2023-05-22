@@ -1,12 +1,12 @@
 let fontSizes = document.querySelectorAll('.font-size');
 let textColors = document.querySelectorAll('[data-text-color]');
 let bgColors = document.querySelectorAll('[data-bg-color]');
-let currClass = '';
+let reader = document.querySelector('.book__content')
 
 fontSizes.forEach.call(fontSizes, (size) => {
     size.addEventListener('click', (e) => {
         e.preventDefault();
-        setSize(size);
+        setSize(e);
     })
 })
 
@@ -24,22 +24,18 @@ bgColors.forEach.call(bgColors, (bgColor) => {
     })
 })
 
-function setSize(size) {
-    let currIndex = [...fontSizes].findIndex(size =>
+function setSize(e) {
+    const currIndex = [...fontSizes].findIndex(size =>
         size.classList.contains('font-size_active'));
+    const size = e.target.dataset.size;
     fontSizes[currIndex].classList.remove('font-size_active');
-    size.classList.add('font-size_active');
-    currSize = size.getAttribute('data-size');
-    if (currClass) {
-        book.classList.remove(currClass);
+    e.target.classList.add('font-size_active');
+    if (size) {
+        reader.className = `book__content book_fs-${size}`;
+    } else {
+        reader.className = "book__content";
     }
-    if (currSize == 'small') {
-        currClass = 'book_fs-small';
-        book.classList.add(currClass);
-    } else if (currSize == 'big') {
-        currClass = 'book_fs-big';
-        book.classList.add(currClass);
-    };
+    
 }
 
 function setTextColor(textColor) {
